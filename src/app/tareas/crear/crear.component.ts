@@ -12,46 +12,46 @@ import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angula
   styleUrl: './crear.component.css'
 })
 export class CrearComponent {
-  form!: FormGroup;
+  form!: FormGroup; // Formulario reactivo para crear tarea
       
-  /*------------------------------------------
-  --------------------------------------------
-  Created constructor
-  --------------------------------------------
-  --------------------------------------------*/
+  /**
+   * Constructor de la clase CrearComponent
+   *
+   * @param tareaService Servicio para manejar tareas
+   * @param router Router para navegación
+   */
   constructor(
-    public tareaService: TareaService,
-    private router: Router
+    public tareaService: TareaService, // Servicio para manejar tareas
+    private router: Router // Router para navegación
   ) { }
       
   /**
-   * Write code on Method
+   * Método que se ejecuta al inicializar el componente
    *
-   * @return response()
+   * @return void
    */
   ngOnInit(): void {
     this.form = new FormGroup({
-      title: new FormControl('', [Validators.required]),
-      description: new FormControl('', Validators.required),
+    title: new FormControl('', [Validators.required]), // Campo de título requerido
+      description: new FormControl('', Validators.required), // Campo de descripción requerido
       completed: new FormControl(false)
     });
   }
       
   /**
-   * Write code on Method
+   * Getter para acceder a los controles del formulario
    *
-   * @return response()
+   * @return {any} Controles del formulario
    */
   get f(){
     return this.form.controls;
   }
 
-  
-      
+    
   /**
-   * Write code on Method
+   * Método para enviar el formulario
    *
-   * @return response()
+   * @return void
    */
   submit() {
   if (this.form.valid) {
@@ -59,7 +59,7 @@ export class CrearComponent {
     this.tareaService.crearTarea(this.form.value).subscribe(
       res => {
         console.log('Tarea creada:', res);
-        this.router.navigate(['/tareas/index']);
+        this.router.navigate(['/tareas/index']); // Redirige a la lista de tareas después de crear una nueva
       },
       err => console.error('Error al crear tarea:', err)
     );

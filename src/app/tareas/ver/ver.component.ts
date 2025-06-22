@@ -14,13 +14,15 @@ import { CommonModule } from '@angular/common';
 export class VerComponent {
   tarea!: Tarea;
   id!: number;
-
+  // /**
+  //  * Constructor de la clase VerComponent  
   constructor(
     private route: ActivatedRoute,
     private tareaService: TareaService,
     private router: Router
   ) {}
-
+   //  /**
+  //   * Método que se ejecuta al inicializar el componente 
   ngOnInit(): void {
     const idParam = this.route.snapshot.paramMap.get('id');
     this.id = idParam ? +idParam : 0;
@@ -30,7 +32,8 @@ export class VerComponent {
       this.router.navigate(['/tareas/index']);
       return;
     }
-
+    //  * Método para obtener los detalles de la tarea por ID
+    // Llama al servicio para obtener la tarea por ID
     this.tareaService.find(this.id).subscribe({
       next: (data: Tarea) => this.tarea = data,
       error: (err) => {

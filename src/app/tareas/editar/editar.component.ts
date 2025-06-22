@@ -28,7 +28,10 @@ export class EditarComponent {
     description: new FormControl('', Validators.required),
     completed: new FormControl(false)
   });
-
+// 
+// * Constructor de la clase EditarComponent
+// /**
+   
   constructor(
     public tareaService: TareaService,
     private route: ActivatedRoute,
@@ -44,7 +47,8 @@ export class EditarComponent {
       this.router.navigate(['/tareas/index']);
       return;
     }
-
+    // * Método para obtener los detalles de la tarea por ID
+    // Llama al servicio para obtener la tarea por ID
     this.tareaService.find(this.id).subscribe({
       next: (data: Tarea) => {
         this.tarea = data;
@@ -73,7 +77,8 @@ export class EditarComponent {
       ...this.form.value,
       id: this.id
     };
-
+     // * Actualiza la tarea con los valores del formulario
+    // Llama al servicio para actualizar la tarea
     this.tareaService.editarTarea(tareaActualizada).subscribe({
       next: () => {
         console.log('Tarea actualizada exitosamente!');

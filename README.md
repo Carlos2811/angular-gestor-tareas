@@ -1,59 +1,123 @@
-# PruebaFront
+📝 Gestor de Tareas - Prueba Técnica (Frontend Angular)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.10.
+Este proyecto es una aplicación web desarrollada con Angular para la gestión de tareas. Permite crear, editar, listar, ver detalles y eliminar tareas. Fue creado como parte de una prueba técnica donde se evaluaron buenas prácticas de desarrollo, organización, tipado fuerte con TypeScript y diseño responsivo.
 
-## Development server
+🛠️ Tecnologías utilizadas
 
-To start a local development server, run:
+Framework principal: Angular 19
 
-```bash
+Lenguaje: TypeScript
+
+Estilos: Bootstrap 5 + Bootstrap Icons
+
+Routing y Navegación: Angular Router
+
+Manejo de formularios: Reactive Forms
+
+Consumo de API: HttpClient
+
+Testing mínimo requerido: (opcional Jest/Vitest)
+
+📁 Estructura del proyecto
+
+src/
+│
+├── app/
+│   ├── tareas/
+│   │   ├── crear/         # Componente para crear tareas
+│   │   ├── editar/        # Componente para editar tareas
+│   │   ├── index/         # Componente principal (listado de tareas)
+│   │   ├── ver/           # Componente para ver detalle de tarea
+│   │   └── tarea.service.ts  # Servicio Angular para consumir backend
+│   ├── tarea.ts           # Modelo de Tarea
+│   └── app-routing.module.ts
+
+🚀 Justificación tecnológica
+
+Se eligió Angular por las siguientes razones:
+
+Es un framework robusto y escalable para aplicaciones SPA.
+
+Incluye una arquitectura basada en componentes y servicios ideal para separación de responsabilidades.
+
+Soporta formularios reactivos con validaciones.
+
+Excelente integración con TypeScript, ideal para asegurar tipado fuerte y claridad.
+
+Potente sistema de enrutamiento y navegación.
+
+⚙️ Instalación y ejecución del proyecto:
+
+1. Clonar el repositorio
+
+git clone https://github.com/Carlos2811/angular-gestor-tareas.git
+cd angular-gestor-tareas
+
+2. Instalar dependencias
+
+npm install
+
+3. Ejecutar el servidor de desarrollo
+
 ng serve
-```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Luego abre en tu navegador: http://localhost:4200
 
-## Code scaffolding
+🔧 Funcionalidades implementadas
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+✅ Listar tareas con título, descripción y estado.
 
-```bash
-ng generate component component-name
-```
+✅ Crear nuevas tareas con validaciones.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+✅ Marcar tareas como completadas o pendientes.
 
-```bash
-ng generate --help
-```
+✅ Editar título, descripción y estado.
 
-## Building
+✅ Ver detalle individual de una tarea.
 
-To build the project run:
+✅ Eliminar tareas con confirmación.
 
-```bash
-ng build
-```
+✅ Aplicación responsiva (desktop y móvil).
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+✅ Navegación amigable con Angular Router.
 
-## Running unit tests
+✅ Código limpio, organizado y comentado.
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+🔀 Comunicación con Backend
 
-```bash
+Se hace uso de HttpClient para conectar con un backend REST en Spring Boot.
+
+La entidad Tarea en el backend tiene los campos: id, title, description, completed.
+
+La URL base para las peticiones es: http://localhost:8080/api/tareas.
+
+🧰 Pruebas básicas (opcional)
+
+Este proyecto incluye una estructura básica para agregar pruebas unitarias con:
+
 ng test
-```
 
-## Running end-to-end tests
+Para pruebas más avanzadas, se puede integrar Jest o Cypress para e2e.
 
-For end-to-end (e2e) testing, run:
 
-```bash
-ng e2e
-```
+⏱️ Tiempo estimado de desarrollo:
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+- Análisis y diseño de estructura: 1 hora
 
-## Additional Resources
+- Desarrollo de componentes: 3 horas
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- Integración con backend Spring Boot: 1 hora
+
+- Validaciones y responsividad: 1 hora
+
+- Pruebas y documentación: 1 hora
+
+- Total estimado: 7 horas
+
+👨‍💻 Autor:
+
+Carlos Andrés Peña Ruiz | Desarrollador Fullstack | Angular • Spring Boot • MySQ | LinkedIn | carlosanp28@hotmail.com
+
+📄 Licencia:
+
+Este proyecto fue desarrollado para fines técnicos y educativos como parte de una prueba práctica.

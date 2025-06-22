@@ -13,18 +13,15 @@ import { Tarea } from '../tarea';
 export class IndexComponent {
 tareas: Tarea[] = [];
       
-  /*------------------------------------------
-  --------------------------------------------
-  Created constructor
-  --------------------------------------------
-  --------------------------------------------*/
-  constructor(public tareaService: TareaService) { }
-      
   /**
-   * Write code on Method
+   * Constructor de la clase IndexComponent
    *
-   * @return response()
+   * @param tareaService Servicio para manejar tareas
    */
+  constructor(public tareaService: TareaService) { }
+  /**
+   *Método que se ejecuta al inicializar el componente 
+  */
   ngOnInit(): void {
     this.tareaService.obtenerTarea().subscribe((data: Tarea[])=>{
       this.tareas = data;
@@ -32,11 +29,11 @@ tareas: Tarea[] = [];
     })  
   }
       
-  /**
-   * Write code on Method
-   *
-   * @return response()
-   */
+/**
+ * 
+ * @param id ID de la tarea a borrar
+ * Método para borrar una tarea por su ID
+ */
   borrarTarea(id:number){
     this.tareaService.borrarTarea(id).subscribe(res => {
          this.tareas = this.tareas.filter(item => item.id !== id);
