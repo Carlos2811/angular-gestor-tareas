@@ -1,0 +1,80 @@
+<!-- Enlace al CDN de los íconos de Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+<!-- Contenedor con scroll horizontal si la tabla es muy ancha (responsive) -->
+<div class="table-responsive">
+
+  <!-- Tabla con estilos de Bootstrap -->
+  <table class="table table-striped table-bordered align-middle text-center">
+    
+    <!-- Encabezado de la tabla con fondo oscuro -->
+    <thead class="table-dark">
+      <tr>
+        <th>ID</th>
+        <th>Título</th>
+        <th>Descripción</th>
+        <th>Estado</th>
+        <th>Acción</th>
+      </tr>
+    </thead>
+
+    <!-- Cuerpo de la tabla, iterando sobre la lista de tareas -->
+    <tbody>
+      <tr *ngFor="let tarea of tareas">
+        <!-- ID de la tarea -->
+        <td>{{ tarea.id }}</td>
+
+        <!-- Título de la tarea -->
+        <td>{{ tarea.title }}</td>
+
+        <!-- Descripción de la tarea -->
+        <td>{{ tarea.description }}</td>
+
+        <!-- Estado (Completada o Pendiente) con estilos condicionales -->
+        <td>
+          <span 
+            class="badge"
+            [ngClass]="{
+              'bg-success': tarea.completed,
+              'bg-warning text-dark': !tarea.completed
+            }">
+            {{ tarea.completed ? 'Completada' : 'Pendiente' }}
+          </span>
+        </td>
+
+        <!-- Botones de acción (Ver, Editar, Borrar) -->
+        <td class="d-grid gap-2 d-md-flex justify-content-center">
+
+          <!-- Botón: Ver tarea -->
+          <a 
+            [routerLink]="['/tareas', tarea.id, 'ver']" 
+            class="btn btn-info btn-sm"
+          >
+            <i class="bi bi-eye"></i> Ver
+          </a>
+
+          <!-- Botón: Editar tarea -->
+          <a 
+            [routerLink]="['/tareas', tarea.id, 'editar']" 
+            class="btn btn-primary btn-sm"
+          >
+            <i class="bi bi-pencil-square"></i> Editar
+          </a>
+
+          <!-- Botón: Borrar tarea -->
+          <button 
+            (click)="borrarTarea(tarea.id!)" 
+            class="btn btn-danger btn-sm"
+          >
+            <i class="bi bi-trash"></i> Borrar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Botón para crear una nueva tarea -->
+  <a routerLink="/tareas/crear" class="btn btn-success">
+    + Crear Nueva Tarea
+  </a>
+</div>

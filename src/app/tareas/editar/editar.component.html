@@ -1,0 +1,60 @@
+<div class="container mt-4">
+  <h1 class="mb-4">Actualizar Tarea</h1>
+
+  <a routerLink="/tareas/index" class="btn btn-primary mb-4">Regresar</a>
+
+  <form *ngIf="form" [formGroup]="form" (ngSubmit)="submit()" [formGroup]="form" (ngSubmit)="submit()">
+    <div class="row">
+      <!-- Título -->
+      <div class="form-group col-12 col-md-6 mb-3">
+        <label for="title">Título:</label>
+        <input
+          formControlName="title"
+          id="title"
+          type="text"
+          [(ngModel)]="tarea.title"
+          class="form-control"
+        />
+        <div *ngIf="f['title'].touched && f['title'].invalid" class="alert alert-danger mt-2">
+          <div *ngIf="f['title'].errors?.['required']">
+            El título es requerido.
+          </div>
+        </div>
+      </div>
+
+      <!-- Descripción -->
+      <div class="form-group col-12 mb-3">
+        <label for="description">Contenido:</label>
+        <textarea
+          formControlName="description"
+          id="description"
+          [(ngModel)]="tarea.description"
+          class="form-control"
+          rows="3"
+        ></textarea>
+        <div *ngIf="f['description'].touched && f['description'].invalid" class="alert alert-danger mt-2">
+          <div *ngIf="f['description'].errors?.['required']">
+            El contenido es requerido.
+          </div>
+        </div>
+      </div>
+
+      <!-- Completado -->
+      <div class="form-group col-12 col-md-6 mb-3 form-check ms-1">
+        <input
+          formControlName="completed"
+          id="completed"
+          type="checkbox"
+          class="form-check-input"
+          [(ngModel)]="tarea.completed"
+        />
+        <label for="completed" class="form-check-label ms-2">¿Completada?</label>
+      </div>
+
+      <!-- Botón -->
+      <div class="col-12">
+        <button class="btn btn-success w-100" type="submit" [disabled]="!form.valid">Actualizar</button>
+      </div>
+    </div>
+  </form>
+</div>

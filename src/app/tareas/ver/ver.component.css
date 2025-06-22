@@ -1,0 +1,9 @@
+.card {
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+}
+
+.form-label {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
